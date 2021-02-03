@@ -1,4 +1,6 @@
 com/example/demo/core/entity/Movie.class
+com/example/demo/exception/CustomServiceException.class
+com/example/demo/exception/CustomExceptionHandler.class
 com/example/demo/core/response/GenericResponse.class
 com/example/demo/CaseApplication.class
 com/example/demo/core/entity/base/BaseEntity.class

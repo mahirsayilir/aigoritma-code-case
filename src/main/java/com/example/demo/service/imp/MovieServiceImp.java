@@ -5,6 +5,7 @@ import com.example.demo.core.entity.Movie;
 import com.example.demo.core.request.CreateMovieRequest;
 import com.example.demo.core.request.UpdateMovieRequest;
 import com.example.demo.core.response.GenericResponse;
+import com.example.demo.exception.CustomServiceException;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,12 +40,7 @@ public class MovieServiceImp implements MovieService {
         try {
             movieRepository.save(movie);
         } catch (ConstraintViolationException ex) {
-            String errorMessage =
-                    ex.getConstraintViolations()
-                    .stream()
-                    .map(e -> e.getPropertyPath().toString() + " " + e.getMessage())
-                    .collect(Collectors.joining(","));
-            return GenericResponse.bad(errorMessage);
+            badRequestWithMessage(ex);
         }
         return GenericResponse.ok();
     }
@@ -54,13 +50,13 @@ public class MovieServiceImp implements MovieService {
     public GenericResponse<?> update(Long movieId, UpdateMovieRequest request) {
         Optional<Movie> movieOptional = movieRepository.findByIdAndAndDeletedIsFalse(movieId);
         if (!movieOptional.isPresent()) {
-            throw new RuntimeException("Movie Not Found!");   // @TODO: Add exception classes
+            throw new CustomServiceException("Movie Not Found!");
         }
         Movie updatedMovie = updateMovie(movieOptional.get(), request);
         try {
             movieRepository.save(updatedMovie);
         } catch (ConstraintViolationException ex) {
-            log.error(ex.getMessage());
+            badRequestWithMessage(ex);
         }
         return GenericResponse.ok();
     }
@@ -70,7 +66,7 @@ public class MovieServiceImp implements MovieService {
     public GenericResponse<?> delete(Long movieId) {
         Optional<Movie> movieOptional = movieRepository.findByIdAndAndDeletedIsFalse(movieId);
         if (!movieOptional.isPresent()) {
-            throw new RuntimeException("Movie Not Found!");   // @TODO: Add exception classes
+            throw new CustomServiceException("Movie Not Found!");
         }
         movieOptional.get().setDeleted(true);
         return GenericResponse.ok(movieOptional.get());
@@ -81,5 +77,14 @@ public class MovieServiceImp implements MovieService {
         movie.setDirector(request.getDirector());
         movie.setYear(request.getYear());
         return movie;
+    }
+
+    private GenericResponse<?> badRequestWithMessage(ConstraintViolationException ex) {
+        String errorMessage =
+                ex.getConstraintViolations()
+                        .stream()
+                        .map(e -> e.getPropertyPath().toString() + " " + e.getMessage())
+                        .collect(Collectors.joining(","));
+        return GenericResponse.bad(errorMessage);
     }
 }
