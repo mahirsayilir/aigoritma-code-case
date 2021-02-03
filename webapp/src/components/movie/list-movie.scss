@@ -1,0 +1,47 @@
+.list-container {
+  .list-item {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+
+    .pill-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .delete-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      visibility: hidden;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  .list-item:hover {
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 1px 4px;
+    cursor: pointer;
+    .delete-icon {
+      visibility: visible;
+    }
+  }
+
+  .not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: grey;
+    flex-direction: column;
+    svg {}
+  }
+}

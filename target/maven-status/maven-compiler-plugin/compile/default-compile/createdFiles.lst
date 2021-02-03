@@ -1,0 +1,15 @@
+com/example/demo/core/entity/Movie.class
+com/example/demo/core/response/GenericResponse.class
+com/example/demo/CaseApplication.class
+com/example/demo/core/entity/base/BaseEntity.class
+com/example/demo/service/MovieService.class
+com/example/demo/repository/MovieRepository.class
+com/example/demo/converter/base/BaseConverter.class
+com/example/demo/converter/CreateMovieRequestToMovieConverter.class
+com/example/demo/core/response/CreateGenericResponse.class
+com/example/demo/controller/MovieController.class
+com/example/demo/core/request/CreateMovieRequest.class
+com/example/demo/core/response/GenericResponseEntity.class
+com/example/demo/core/request/UpdateMovieRequest.class
+com/example/demo/service/imp/MovieServiceImp.class
+com/example/demo/core/request/base/BaseRequest.class

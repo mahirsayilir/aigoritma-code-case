@@ -1,0 +1,19 @@
+.navigation-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  .navigation-item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    margin-left: 20px;
+    padding: 10px;
+  }
+
+  .navigation-item:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+}

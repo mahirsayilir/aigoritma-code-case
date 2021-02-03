@@ -1,0 +1,19 @@
+.pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pill-blue {
+  background-color: #3498db;
+}
+
+.pill-red {
+  background-color: #e74c3c;
+}

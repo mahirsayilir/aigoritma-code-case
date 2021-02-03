@@ -1,0 +1,20 @@
+.status {
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.status-success {
+  border: 1px solid #27ae60;
+  background-color: #2ecc71;
+}
+
+.status-request {
+  border: 1px solid #2980b9;
+  background-color: #3498db;
+}
+
+.status-failure {
+  border: 1px solid #c0392b;
+  background-color: #e74c3c;
+}
